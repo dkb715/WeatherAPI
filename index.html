@@ -8,36 +8,48 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="Script.JS">
     <title>Weather API!</title>
-   
+   <style>
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: #2196F3;
+  padding: 5px;
+  height: auto;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  padding: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+</style>
   </head>
 
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <h1 class="display-4">Weather Dashboard</h1>
-      <p class="lead">Welcome to the Weather Dashboard. Choose your location to get started!</p>
-    </div>
+      <p class="lead">Welcome to the Weather Dashboard. Search your location to get started!</p></div>
   </div>
   <body>
-    <h1></h1>
     <div class="grid-container">
-      <div class="grid-item">1</div>
-      <div class="grid-item">2</div>
-      <div class="grid-item">3</div>
-      <div class="grid-item">4</div>
-      <div class="grid-item">5</div>
-      <div class="grid-item">6</div>
-      <div class="grid-item">7</div>
-      <div class="grid-item">8</div>
-      <div class="grid-item">9</div>
-    </div>
-    <div class="grid-container">
-      <div class="row1">Search For a City <input class="btn btn-primary" type="submit" value="Submit">
-        <div class="column1" style="background-color:#bbb;"></div>
+      <div class="grid-item zero"><p> Search For a City:</p><input type="text" placeholder="Search...">
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action">Austin</a>
+          <a href="#" class="list-group-item list-group-item-action">Chicago</a>
+          <a href="#" class="list-group-item list-group-item-action">New York</a>
+          <a href="#" class="list-group-item list-group-item-action">Orlando</a>
+          <a href="#" class="list-group-item list-group-item-action">San Francisco</a>
+          <a href="#" class="list-group-item list-group-item-action">Seattle</a>
+          <a href="#" class="list-group-item list-group-item-action">Denver</a>
+          <a href="#" class="list-group-item list-group-item-action">Atlanta</a>
+        </div></div>
+      <div class="grid-item two">2
+
       </div>
-      <div class="row2">
-        <div class="column2"></div>
-      </div>
+      <div class="grid-item 3">3</div>
     </div>
+
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
