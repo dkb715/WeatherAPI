@@ -24,6 +24,7 @@
   font-size: 20px;
   text-align: left;
 }
+
 </style>
   </head>
 
@@ -34,7 +35,7 @@
   </div>
   <body>
     <div class="grid-container">
-      <div class="grid-item zero"><p> Search For a City:</p><input type="text" placeholder="Search...">
+      <div class="grid-item zero"><p> Find Your City:<button type="button" id="start" >Search</button></p><input type="text" placeholder="Search...">
         <div class="list-group">
           <a href="#" class="list-group-item list-group-item-action">Austin</a>
           <a href="#" class="list-group-item list-group-item-action">Chicago</a>
@@ -46,17 +47,50 @@
           <a href="#" class="list-group-item list-group-item-action">Atlanta</a>
         </div></div>
       <div class="grid-item two">
-        <div class="boxone">Current Location</div>
+        <div class="boxone">
+          <div class="temp"></div>
+          <div class="humidity"></div>
+          <div class="wind"></div>
+          <div class="UV"></div>
+        </div>
         <div class="boxtwo">5 Day Forecast:
           <div class="miniboxcontainer">
-          <div class="minibox"></div><div class="minibox"></div><div class="minibox"></div><div class="minibox"></div><div class="minibox"></div>
+          <div class="minibox1"></div><div class="minibox2"></div><div class="minibox3"></div><div class="minibox4"></div><div class="minibox5"></div>
         </div>
         </div>
       </div>
     </div>
 
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      var APIKey = "166a433c57516f51dfab1f7edaed8413";
+      var queryURL = "api.openweathermap.org/data/2.5/find?q=London" + APIKey;
+  
+      $.ajax({
+        url: queryURL,
+        method: "GET"
+      })
+        .then(function(response) {
+  
+          // Log the queryURL
+          console.log(queryURL);
+          console.log(response);
+          $(".city").html("<h1>" + response.name + " Weather Details</h1>");
+          $(".wind").text("Wind Speed: " + response.wind.speed);
+          $(".humidity").text("Humidity: " + response.main.humidity);
+          $(".temp").text("Temperature (F) " + response.main.temp);
+  
+          // Converts the temp to Kelvin with the below formula
+          var tempF = (response.main.temp - 273.15) * 1.80 + 32;
+          $(".tempF").text("Temperature (Kelvin) " + tempF);
+  
+          // Log the data in the console as well
+          console.log("Wind Speed: " + response.wind.speed);
+          console.log("Humidity: " + response.main.humidity);
+          console.log("Temperature (F): " + response.main.temp);
+        });
+    </script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
